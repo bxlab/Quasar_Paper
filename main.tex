@@ -1,0 +1,46 @@
+\documentclass[letterpaper,11pt,english]{article}
+\usepackage{paper}
+
+\addbibresource{main.bib}
+
+\title{James' \LaTeX Paper Template}
+
+\author[1]{Author A}
+\author[1]{Author B}
+\author[1]{Author C}
+\author[2]{Author D}
+\author[2]{Author E}
+
+\affil[1]{Department of Computer Science, Foo University}
+\affil[2]{Department of Mechanical Engineering, Bar University}
+
+\begin{document}
+
+\maketitle
+
+\section{Abstract}
+
+\blindtext
+
+\section{Keywords}
+
+Foo, Bar, Baz
+
+\section{Background}
+
+\textbf{How} about some references? I think this is an important paper\cite{Nekrutenko2012}. You might disagree. If you suck.
+
+How about \href{http://galaxyproject.org} a url.
+
+\subsection{Test}
+
+\blindmathtrue
+\blindtext
+
+\section{Results}
+
+\section{Discussion}
+
+\printbibliography
+
+\end{document}

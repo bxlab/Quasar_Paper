@@ -1,0 +1,226 @@
+%% \pdfcompresslevel=9
+%% \pdfprotrudechars=2
+%% \pdfadjustspacing=2
+
+\usepackage{ifthen}
+\usepackage[english]{babel}
+\usepackage{blindtext}
+
+%% Multiple authors and affiliations
+
+\usepackage{authblk}
+\renewcommand\Authands{ and }
+
+\renewcommand\Authfont{\sffamily}
+\renewcommand\Affilfont{\sffamily}
+
+\makeatletter
+
+\renewcommand{\maketitle}{
+
+	{{ \sffamily \Large \@title} \par}
+
+  \vspace{1em}
+
+	{ \@author \par }
+  % {\@affil \par}
+
+  \newpage
+}
+
+%\renewcommand{\maketitle}{
+%        {\LARGE\noindent\ignorespaces\@title\par}
+%        {\Large\noindent\ignorespaces\@author\par}
+%       {\normalsize\noindent\ignorespaces\@affil\par}
+%        {\normalsize\noindent\ignorespaces\@institute\par}
+%        {\normalsize\noindent\ignorespaces\@address\par}
+%        {\normalsize\noindent\ignorespaces\@date\par}
+%}
+\makeatother
+
+%% Font setup
+
+\usepackage{fontspec,microtype,unicode-math}
+\defaultfontfeatures{Ligatures=TeX,Scale=MatchLowercase}
+
+\setmainfont[Path=fonts/,
+             UprightFont=*-Regular, BoldFont=*-Bold, ItalicFont=*-It, BoldItalicFont=*-BoldIt,
+             Numbers={Proportional, Lining},]{MinionPro}
+\setsansfont[Path=fonts/, BoldFont=*-Bold, ItalicFont=*-It, BoldItalicFont=*-BoldIt,
+             UprightFont=*-Regular,
+             Numbers={Proportional, Lining} ]{MyriadPro}
+
+%\setmathfont{latinmodern-math.otf}
+%\setmathfont{MinionPro}
+%\setmathfont[Path=fonts/,
+%             UprightFont=*-Regular, BoldFont=*-Bold, ItalicFont=*-It, BoldItalicFont=*-BoldIt]{MinionPro}
+
+%\setmonofont[]{DejaVu Sans Mono}
+
+\newcommand{\lining}{\addfontfeatures{Numbers={Lining}}}
+\newcommand{\monospaced}{\addfontfeatures{Numbers={Monospaced}}}
+
+\usepackage{textcase}
+
+%% Spaced out text
+
+\newcommand{\textssc}[1]{\textsc{\textls{#1}}}
+\newcommand{\abbr}[1]{{\lining \textls*[40]{#1}}}
+
+\usepackage{enumitem}
+\setlist{nolistsep,leftmargin=0pt}
+
+\usepackage[letterpaper,textheight=9in,textwidth=6in,centering,includehead=false,includefoot=false]{geometry}
+
+\usepackage[small,compact,pagestyles]{titlesec}
+\usepackage{titletoc}
+
+\usepackage{soul}
+% \sethlcolor{cyan}
+
+\usepackage{relsize}
+
+\usepackage{parcolumns}
+\usepackage{tabularx}
+
+% Reverse enumeration
+\usepackage{etaremune}
+\usepackage{enumitem}
+
+%% Title formats
+
+\newcommand{\defaulttitleformats}{
+    \titleformat{\section}{\large\sffamily}{}{0em}{}
+    \titlespacing{\section}{0pt}{5pt}{5pt}
+    \titleformat{\subsection}{\sffamily}{\thesubsection}{1em}{}
+    \titlespacing{\subsection}{0pt}{3pt}{2pt}
+    \titlespacing{\subsubsection}{0pt}{0pt}{0pt}
+}
+
+% Environment for supressing titles completely
+
+\gdef\ttlh@none#1#2#3#4#5#6#7#8{}
+\newcommand{\nosectiontitleformats}{
+    \titleformat{\section}[none]{}{}{0pt}{}
+    \titleformat{\subsection}[none]{}{}{0pt}{}
+}
+
+\defaulttitleformats
+\newenvironment{nosectiontitles}{\nosectiontitleformats}{\defaulttitleformats}
+
+%% Paragraph spacing
+
+\setlength{\parindent}{0in}
+\setlength{\parskip}{0.08in}
+
+\makeatletter
+
+% fieldlist environment
+\ifthenelse{\isundefined{\DUfieldlist}}{
+  \newenvironment{DUfieldlist}%
+    {\description}
+    {\enddescription}
+}{}
+
+\ifthenelse{\isundefined{\DUlineblock}}{
+  \newenvironment{DUlineblock}[1]{%
+    \list{}{\setlength{\partopsep}{\parskip}
+            %\addtolength{\partopsep}{\baselineskip}
+            \setlength{\topsep}{0pt}
+            \setlength{\itemsep}{0.15\baselineskip}
+            \setlength{\parsep}{0pt}
+            \setlength{\leftmargin}{#1}}
+    %\raggedright
+  }
+  {\endlist}
+}{}
+
+\makeatother
+
+\widowpenalty=10000
+\clubpenalty=10000
+
+% Columntypes
+%% \newcolumntype{R}[1]{>{\raggedleft\hspace{0pt}}p{#1}}%
+%% \newcolumntype{L}[1]{>{\raggedright\hspace{0pt}}p{#1}}%
+
+\newenvironment{listing}{%
+\enumerate%
+\expandafter\def\expandafter\par\expandafter{\par\item}%
+% a more conventional (and safer) way of doing this redefining would be
+% \let\oldpar=\par \def\par{\oldpar\item}%. We get away with this
+% because within the \enumerate, \par does not expand to \par, which
+% would result in an infinite loop.
+\item
+
+}{%
+\endenumerate%
+}
+
+\newenvironment{notoc}
+ {\setcounter{secnumdepth}{0}%
+  \addtocontents{toc}{\protect\setcounter{tocdepth}{0}\ignorespaces}}
+ {\setcounter{secnumdepth}{2}%
+  \addtocontents{toc}{\protect\setcounter{tocdepth}{2}\ignorespaces}}
+  
+%% Hyperlinks -- needed for Bibliography to work
+
+\usepackage[hidelinks]{hyperref}
+\hypersetup{colorlinks,citecolor=black,filecolor=black,linkcolor=black,urlcolor=black}
+  
+%% Bibliogprahy
+
+\usepackage[autostyle]{csquotes}
+\usepackage{doi}
+\usepackage[
+	giveninits=true,
+    backend=biber,
+    style=nature,
+    citestyle=numeric-comp,
+    url=false,
+    doi=true,
+    maxbibnames=99
+]{biblatex}
+\DeclareNameAlias{sortname}{last-first}
+
+%% Override article from biblatex-nature to display DOI
+\DeclareBibliographyDriver{article}{%
+  \usebibmacro{bibindex}%
+  \usebibmacro{begentry}%
+  \usebibmacro{author/translator+others}%
+  \setunit{\labelnamepunct}\newblock
+  \iftoggle{bbx:articletitle}
+    {%
+      \usebibmacro{title}%
+      \newblock
+    }
+    {}%
+  \printlist{language}%
+  \newunit\newblock
+  \usebibmacro{byauthor}%
+  \newunit\newblock
+  \usebibmacro{bytranslator+others}%
+  \newunit\newblock
+  \printfield{version}%
+  \newunit\newblock
+  \usebibmacro{journal+issuetitle}%
+  \newunit
+  \usebibmacro{byeditor+others}%
+  \newunit
+  \usebibmacro{note+pages}%
+  \newunit
+  \iftoggle{bbx:isbn}
+    {\printfield{issn}}
+    {}%
+  \setunit{\addspace}\newblock
+  \usebibmacro{issue+date}%
+  \newunit\newblock
+  \usebibmacro{addendum+pubstate}%
+  \setunit{\bibpagerefpunct}\newblock
+  \usebibmacro{pageref}%
+  \newunit\newblock
+  \usebibmacro{related}%
+  \usebibmacro{finentry}
+  \newunit\newblock
+  \usebibmacro{doi+eprint+url}%
+}
