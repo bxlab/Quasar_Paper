@@ -1,18 +1,51 @@
 \documentclass[letterpaper,11pt,english]{article}
 \usepackage{paper}
+\usepackage{subscript}
+\usepackage{caption}
+\captionsetup[figure]{justification=justified, singlelinecheck=off} 
 
-\addbibresource{main.bib}
+\newcommand{\dofigure}[4]{
+\begin{figure}[#4]
+\begin{minipage}{\textwidth}
+\includegraphics[]{figures/Figure_#1.pdf}
+\caption{\small{\textbf{#2}
+#3}}
+\end{minipage}
+\end{figure}
+}
 
-\title{James' \LaTeX Paper Template}
+\newcommand{\doHPfigure}[4]{
+\begin{figure}[#4]
+\begin{minipage}[#4]{.5\textwidth}
+\includegraphics[]{figures/Figure_#1.pdf}
+\caption{\small{\textbf{#2}
+#3}}
+\end{minipage}
+\end{figure}
+}
 
-\author[1]{Author A}
-\author[1]{Author B}
-\author[1]{Author C}
-\author[2]{Author D}
-\author[2]{Author E}
+\newcommand{\doFPfigure}[4]{
+\begin{figure}[#4]
+\includegraphics[]{figures/Figure_#1.pdf}
+\end{figure}
+\clearpage
+\newpage
+\begin{figure}[t]
+\begin{minipage}{\textwidth}
+\caption{\small{\textbf{#2}
+#3}}
+\end{minipage}
+\end{figure}
+}
 
-\affil[1]{Department of Computer Science, Foo University}
-\affil[2]{Department of Mechanical Engineering, Bar University}
+\addbibresource{Zotero.bib}
+
+\title{QuASAR: Quality Assessment of Spatial Arrangement Reproducibility in Hi-C Data}
+
+\author[1]{Michael EG Sauria}
+\author[1]{James Taylor}
+
+\affil[1]{Departments of Biology and Computer Science, Johns Hopkins University}
 
 \begin{document}
 
@@ -20,27 +53,11 @@
 
 \section{Abstract}
 
-\blindtext
+100 words maximum.
 
 \section{Keywords}
+Hi-C, quality, replicate, reproducibility, QuASAR, HiFive
 
-Foo, Bar, Baz
-
-\section{Background}
-
-\textbf{How} about some references? I think this is an important paper\cite{Nekrutenko2012}. You might disagree. If you suck.
-
-How about \href{http://galaxyproject.org} a url.
-
-\subsection{Test}
-
-\blindmathtrue
-\blindtext
-
-\section{Results}
-
-\section{Discussion}
-
-\printbibliography
+\input{body.tex}
 
 \end{document}

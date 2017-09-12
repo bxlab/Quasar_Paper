@@ -41,6 +41,7 @@
 %% Font setup
 
 \usepackage{fontspec,microtype,unicode-math}
+\usepackage{mathtools}
 \defaultfontfeatures{Ligatures=TeX,Scale=MatchLowercase}
 
 \setmainfont[Path=fonts/,
@@ -49,6 +50,16 @@
 \setsansfont[Path=fonts/, BoldFont=*-Bold, ItalicFont=*-It, BoldItalicFont=*-BoldIt,
              UprightFont=*-Regular,
              Numbers={Proportional, Lining} ]{MyriadPro}
+
+\setmathfont{XITS Math}
+\setmathfont[Path=fonts/,range=\mathup/{num,latin,Latin,greek,Greek}]{MinionPro-Regular}
+\setmathfont[Path=fonts/,range=\mathbfup/{num,latin,Latin,greek,Greek}]{MinionPro-Bold}
+\setmathfont[Path=fonts/,range=\mathit/{num,latin,Latin,greek,Greek}]{MinionPro-It}
+\setmathfont[Path=fonts/,range=\mathbfit/{num,latin,Latin,greek,Greek}]{MinionPro-BoldIt}
+% \setmathfont[range=\mathscr,StylisticSet={1}]{XITS Math}
+\setmathfont[range={"005B,"005D,"0028,"0029,"007B,"007D,"2211,"002F,"2215 } ]{Latin Modern Math} % brackets, sum, /
+% \setmathfont[range={"002B,"002D,"003A-"003E} ]{MnSymbol} % + - < = >
+% \setmathrm[Path=fonts/,BoldFont=*-Bold, ItalicFont=*-It, BoldItalicFont=*-BoldIt, UprightFont=*-Regular]{MinionPro}
 
 %\setmathfont{latinmodern-math.otf}
 %\setmathfont{MinionPro}
@@ -70,7 +81,7 @@
 \usepackage{enumitem}
 \setlist{nolistsep,leftmargin=0pt}
 
-\usepackage[letterpaper,textheight=9in,textwidth=6in,centering,includehead=false,includefoot=false]{geometry}
+\usepackage[letterpaper,textheight=22.4cm,textwidth=17.3cm,centering,includehead=false,includefoot=false]{geometry}
 
 \usepackage[small,compact,pagestyles]{titlesec}
 \usepackage{titletoc}
@@ -162,6 +173,7 @@
   \addtocontents{toc}{\protect\setcounter{tocdepth}{0}\ignorespaces}}
  {\setcounter{secnumdepth}{2}%
   \addtocontents{toc}{\protect\setcounter{tocdepth}{2}\ignorespaces}}
+ 
   
 %% Hyperlinks -- needed for Bibliography to work
 
@@ -220,7 +232,7 @@
   \usebibmacro{pageref}%
   \newunit\newblock
   \usebibmacro{related}%
-  \usebibmacro{finentry}
   \newunit\newblock
   \usebibmacro{doi+eprint+url}%
+  \usebibmacro{finentry}
 }
