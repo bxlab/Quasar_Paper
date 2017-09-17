@@ -6,6 +6,8 @@
 \usepackage[english]{babel}
 \usepackage{blindtext}
 
+\usepackage[colorinlistoftodos]{todonotes}
+
 %% Multiple authors and affiliations
 
 \usepackage{authblk}
@@ -186,14 +188,16 @@
 \usepackage{doi}
 \usepackage[
 	giveninits=true,
-    backend=biber,
+    %backend=biber,
+    natbib=true,
+    sorting=none,
     style=nature,
     citestyle=numeric-comp,
     url=false,
     doi=true,
     maxbibnames=99
 ]{biblatex}
-\DeclareNameAlias{sortname}{last-first}
+%\DeclareNameAlias{sortname}{last-first}
 
 %% Override article from biblatex-nature to display DOI
 \DeclareBibliographyDriver{article}{%
