@@ -2,8 +2,38 @@
 %\documentclass[letterpaper,11pt,draft]{article}
 \usepackage{paper}
 \usepackage{subscript}
-\usepackage{caption}
-\captionsetup[figure]{justification=justified, singlelinecheck=off} 
+\usepackage{hyperref}
+\usepackage{pdflscape}
+\usepackage{booktabs}
+\usepackage[hypcap=true]{caption}
+\captionsetup{labelfont=bf, justification=justified, singlelinecheck=false, format=plain}
+\usepackage{tabulary, booktabs, longtable, ltcaption, ltabptch}
+\usepackage[referable]{threeparttablex}
+
+\makeatletter
+\newcommand*\TY@cap@gobble[2][]{\\}% from ltxtable (adjusted)
+\def\ltabulary{%
+    \def\caption{% from ltxtable (adjusted)
+        \@ifstar\TY@cap@gobble\TY@cap@gobble}
+    \def\endfirsthead{\\}%
+    \def\endhead{\\}%
+    \def\endfoot{\\}%
+    \def\endlastfoot{\\}%
+    \def\tabulary{%
+        \def\TY@final{%
+    \def\endfirsthead{\LT@end@hd@ft\LT@firsthead}%
+    \def\endhead{\LT@end@hd@ft\LT@head}%
+    \def\endfoot{\LT@end@hd@ft\LT@foot}%
+    \def\endlastfoot{\LT@end@hd@ft\LT@lastfoot}%
+    \longtable}%
+        \let\endTY@final\endlongtable
+        \TY@tabular}%
+    \dimen@\columnwidth
+    \advance\dimen@-\LTleft
+    \advance\dimen@-\LTright
+    \tabulary\dimen@}
+\def\endltabulary{\endtabulary}
+\makeatother
 
 \addbibresource{Zotero.bib}
 
@@ -40,6 +70,9 @@
 \end{minipage}
 \end{figure}
 }
+
+\setcounter{topnumber}{1}
+\setcounter{totalnumber}{1}
 
 \title{QuASAR: Quality Assessment of Spatial Arrangement Reproducibility in Hi-C Data}
 
