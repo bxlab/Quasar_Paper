@@ -1,5 +1,5 @@
 \documentclass[letterpaper,11pt,english]{article}
-%\documentclass[letterpaper,11pt,draft]{article}
+%\documentclass[letterpaper,11pt,english,draft]{article}
 \usepackage{paper}
 \usepackage{subscript}
 \usepackage{hyperref}
@@ -9,6 +9,9 @@
 \captionsetup{labelfont=bf, justification=justified, singlelinecheck=false, format=plain}
 \usepackage{tabulary, booktabs, longtable, ltcaption, ltabptch}
 \usepackage[referable]{threeparttablex}
+
+\usepackage{fixme}
+\fxusetheme{color}
 
 \makeatletter
 \newcommand*\TY@cap@gobble[2][]{\\}% from ltxtable (adjusted)
@@ -74,23 +77,33 @@
 \setcounter{topnumber}{1}
 \setcounter{totalnumber}{1}
 
-\title{QuASAR: Quality Assessment of Spatial Arrangement Reproducibility in Hi-C Data}
-
-\author[1]{Michael EG Sauria}
-\author[1]{James Taylor}
-
-\affil[1]{Departments of Biology and Computer Science, Johns Hopkins University}
+\newcommand{\cis}{\emph{cis}}
 
 \begin{document}
 
-\maketitle
+{\sffamily
+
+{\fontsize{16pt}{16pt}\selectfont QuASAR: Quality Assessment of Spatial Arrangement Reproducibility in Hi-C Data}
+
+\vspace{1em}
+
+Michael EG Sauria\textsuperscript{1,\dagger} and James Taylor\textsuperscript{1,\dagger}
+
+\vspace{0.5em}
+
+\textsuperscript{1}Departments of Biology and Computer Science, Johns Hopkins University, Baltimore MD 21218 \\
+\textsuperscript{\dagger}Correspondence to MEGS (mike.sauria@gmail.com) and JT (james@taylorlab.org)
+
+}
 
 \section{Abstract}
 
-100 words maximum.
+As Hi-C assays have proliferated, tool to assess the reliability of these data have not kept pace. Here we present a new approach, QuASAR, for measuring quality within and between Hi-C samples. We show that QuASAR can detect even tiny fractions of noise and estimate both return on additional sequencing and quality upper bounds. We also demonstrate QuASAR’s utility in measuring replicate agreement across feature resolutions. Finally, QuASAR can estimate resolution limits based on both internal and replicate quality scores. QuASAR provides an objective means of Hi-C sample comparison while providing context and limits to these measures.
 
 \section{Keywords}
-Hi-C, quality, replicate, reproducibility, QuASAR, HiFive
+chromosome conformation, Hi-C, quality, replicate, reproducibility % , QuASAR, HiFive
+
+\clearpage
 
 \input{body.tex}
 

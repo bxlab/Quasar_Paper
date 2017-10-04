@@ -10,7 +10,7 @@
 
 %% Multiple authors and affiliations
 
-\usepackage{authblk}
+\usepackage[noblocks]{authblk}
 \renewcommand\Authands{ and }
 
 \renewcommand\Authfont{\sffamily}
@@ -27,7 +27,7 @@
 	{ \@author \par }
   % {\@affil \par}
 
-  \newpage
+  % \newpage
 }
 
 %\renewcommand{\maketitle}{
@@ -105,9 +105,10 @@
 \newcommand{\defaulttitleformats}{
     \titleformat{\section}{\large\sffamily}{}{0em}{}
     \titlespacing{\section}{0pt}{5pt}{5pt}
-    \titleformat{\subsection}{\sffamily}{\thesubsection}{1em}{}
+    \titleformat{\subsection}{\sffamily}{}{0em}{}
     \titlespacing{\subsection}{0pt}{3pt}{2pt}
     \titlespacing{\subsubsection}{0pt}{0pt}{0pt}
+    \titleformat{\subsubsection}{\sffamily}{}{0em}{}
 }
 
 % Environment for supressing titles completely
@@ -124,7 +125,7 @@
 %% Paragraph spacing
 
 \setlength{\parindent}{0in}
-\setlength{\parskip}{0.08in}
+\setlength{\parskip}{0.10in}
 
 \makeatletter
 
